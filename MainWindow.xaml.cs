@@ -37,7 +37,33 @@ namespace GreenThumb
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            // Null check search field
+            if (!string.IsNullOrEmpty(txtSearch.Text))
+            {
+                // get the plant
+                lstPlants.Items.Clear();
+                using (AppDbContext context = new())
+                {
+                    var plant = context.Plants.FirstOrDefault(p => p.Name == txtSearch.Text);
+                    if (plant != null)
+                    {
+                        // display plant
+                        ListViewItem item = new ListViewItem();
+                        item.Tag = plant;
+                        item.Content = plant.Name;
+                        lstPlants.Items.Add(item);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Can't find that plant. Remember it's case sensitive!");
+                    }
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("You need to write something!");
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -79,6 +105,11 @@ namespace GreenThumb
 
                 ListAllPlants();
             }
+        }
+
+        private void btnList_Click(object sender, RoutedEventArgs e)
+        {
+            ListAllPlants();
         }
     }
 }

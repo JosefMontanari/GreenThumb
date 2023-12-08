@@ -96,7 +96,14 @@
             Width="95" 
             Background="DarkRed"
             Click="btnRemove_Click" 
-           
+            />
+        <Button
+            Name="btnList"
+            Content="List all Plants"
+            Grid.Row="3"
+            Grid.Column="2"
+            Height="40"
+            Width="95" Click="btnList_Click"  
             />
     </Grid>
 </Window>
