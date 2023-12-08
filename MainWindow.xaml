@@ -93,7 +93,9 @@
             Grid.Row="2"
             Grid.Column="2"
             Height="40"
-            Width="95" Click="btnRemove_Click" 
+            Width="95" 
+            Background="DarkRed"
+            Click="btnRemove_Click" 
            
             />
     </Grid>
