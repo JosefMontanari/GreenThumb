@@ -5,7 +5,7 @@ namespace GreenThumb.Database
     public class InstructionRepository
     {
         private readonly AppDbContext _context;
-        public InstructionRepository(AppDbContext context, PlantModel plant)
+        public InstructionRepository(AppDbContext context)
         {
             _context = context;
         }
