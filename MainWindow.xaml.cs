@@ -73,7 +73,27 @@ namespace GreenThumb
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            ListViewItem? item = (ListViewItem)lstPlants.SelectedItem;
 
+            // null check
+            if (item != null)
+            {
+
+                // convert listviewitem to PlantModel
+
+                PlantModel model = (PlantModel)item.Tag;
+
+                // Send PlantModel
+
+                DetailsWindow detailsWindow = new DetailsWindow(model);
+                detailsWindow.Show();
+                Close();
+
+            }
+            else
+            {
+                MessageBox.Show("You need to select a plant first!");
+            }
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
