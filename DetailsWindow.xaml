@@ -58,7 +58,7 @@
             Grid.Row="4"
             Grid.Column="4"
             Height="45"
-            Width="85"/>
+            Width="85" Click="btnClose_Click"/>
 
         <ListView
             Name="lstInstructions"
