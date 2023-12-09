@@ -43,6 +43,7 @@
             Content="Plant Description: "
             Grid.Row="3"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             FontSize="16"
             VerticalAlignment="Top"
             />
@@ -64,6 +65,68 @@
             />
         
         <!--Textboxes-->
+        <TextBox
+            Name="txtName"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="20"
+            Margin="15 0"
+            VerticalAlignment="Bottom"/>
+
+        <TextBox
+            Name="txtDescription"
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="60"
+            Margin="15 0"/>
+
+        <TextBox
+            Name="txtInstruction"
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="20"
+            Margin="15 0"
+            VerticalAlignment="Bottom"/>
         
+        <!--Buttons-->
+        <Button
+            Name="btnAddInstruction"
+            Content="Add Instruction"
+            Grid.Row="5"
+            Grid.Column="3"
+            Height="30"
+            Width="85"
+            VerticalAlignment="Bottom" Click="btnAddInstruction_Click"/>
+
+        <Button
+            Name="btnAddPlant"
+            Content="Add Plant"
+            Grid.Row="6"
+            Grid.Column="1"
+            Height="30"
+            Width="85"
+            VerticalAlignment="Bottom" Click="btnAddPlant_Click"/>
+
+        <Button
+            Name="btnClose"
+            Content="Close window"
+            Grid.Row="6"
+            Grid.Column="2"
+            Height="30"
+            Width="85"
+            VerticalAlignment="Bottom" Click="btnClose_Click"/>
+        
+        <!--Others-->
+        <ListView
+            Name="lstInstructions"
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Grid.Column="5"
+            Grid.ColumnSpan="2"
+            />
     </Grid>
 </Window>
