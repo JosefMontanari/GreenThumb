@@ -5,15 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumb"
         mc:Ignorable="d"
-        Title="AddPlantWindow" Height="450" Width="800"
+        Title="Add Plant" Height="450" Width="800"
         ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+            
+            <!--Elements-->
+            <!--Labels-->
+        <Label
+            Content="Plant Name: "
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="16"
+            VerticalAlignment="Top"
+            />
+        <Label
+            Content="Plant Description: "
+            Grid.Row="3"
+            Grid.Column="1"
+            FontSize="16"
+            VerticalAlignment="Top"
+            />
+        
+        <Label
+            Content="Instruction: "
+            Grid.Row="5"
+            Grid.Column="1"
+            FontSize="16"
+            VerticalAlignment="Top"
+            />
+
+        <Label
+            Content="Instructions: "
+            Grid.Row="1"
+            Grid.Column="5"
+            FontSize="16"
+            VerticalAlignment="Bottom"
+            />
+        
+        <!--Textboxes-->
+        
     </Grid>
 </Window>
