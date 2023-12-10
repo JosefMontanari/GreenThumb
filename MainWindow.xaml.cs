@@ -55,7 +55,7 @@ namespace GreenThumb
                     }
                     else
                     {
-                        MessageBox.Show("Can't find that plant. Remember it's case sensitive!");
+                        MessageBox.Show("Can't find that plant");
                     }
                 }
 
@@ -68,7 +68,9 @@ namespace GreenThumb
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddPlantWindow addPlantWindow = new AddPlantWindow();
+            addPlantWindow.Show();
+            Close();
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)

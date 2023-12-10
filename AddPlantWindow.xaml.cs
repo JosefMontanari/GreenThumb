@@ -1,4 +1,5 @@
-﻿using GreenThumb.Models;
+﻿using GreenThumb.Database;
+using GreenThumb.Models;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -29,6 +30,9 @@ namespace GreenThumb
                 item.Tag = model;
                 item.Content = model.Instruction;
                 lstInstructions.Items.Add(item);
+
+                txtInstruction.Text = "";
+
             }
             else
             {
@@ -38,7 +42,51 @@ namespace GreenThumb
 
         private void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
+            bool isDuplicate = false;
+            using (AppDbContext context = new())
+            {
+                var plants = context.Plants.ToList();
 
+                // Guard clauses ;)
+                if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtDescription.Text))
+                {
+                    MessageBox.Show("Please fill in all required fields!");
+                    foreach (var plant in plants)
+                    {
+                        if (plant.Name == txtName.Text)
+                        {
+                            isDuplicate = true;
+                        }
+                    }
+                }
+                else if (lstInstructions.Items.Count == 0)
+                {
+                    MessageBox.Show("You need to make at least one instruction.");
+                }
+                else if (isDuplicate)
+                {
+                    MessageBox.Show("That plant is already registred!");
+                }
+                else
+                {
+                    // Add the new plant
+                    PlantModel newPlant = new PlantModel() { Name = txtName.Text, Description = txtDescription.Text, Instructions = instructions };
+                    UnitOfWork uow = new(context);
+                    uow.PlantRepository.AddPlant(newPlant);
+
+                    //Clear all fields
+                    lstInstructions.Items.Clear();
+                    txtDescription.Text = "";
+                    txtName.Text = "";
+                    txtInstruction.Text = "";
+                    MessageBox.Show("Thank you, your plant has been added!");
+
+                    // Save changes
+                    uow.SaveChanges();
+
+                }
+
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
