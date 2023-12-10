@@ -47,25 +47,28 @@ namespace GreenThumb
             {
                 var plants = context.Plants.ToList();
 
-                // Guard clauses ;)
-                if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtDescription.Text))
+                //Check duplicate
+                foreach (var plant in plants)
                 {
-                    MessageBox.Show("Please fill in all required fields!");
-                    foreach (var plant in plants)
+                    if (plant.Name.ToLower() == txtName.Text.ToLower())
                     {
-                        if (plant.Name == txtName.Text)
-                        {
-                            isDuplicate = true;
-                        }
+                        isDuplicate = true;
                     }
+                }
+
+                // Guard clauses ;)
+
+                if (isDuplicate)
+                {
+                    MessageBox.Show("That plant is already registred!");
                 }
                 else if (lstInstructions.Items.Count == 0)
                 {
                     MessageBox.Show("You need to make at least one instruction.");
                 }
-                else if (isDuplicate)
+                else if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtDescription.Text))
                 {
-                    MessageBox.Show("That plant is already registred!");
+                    MessageBox.Show("Please fill in all required fields!");
                 }
                 else
                 {
